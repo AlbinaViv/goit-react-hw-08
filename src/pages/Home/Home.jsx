@@ -1,4 +1,5 @@
-import DocumentTitle from "../components/DocumentTitle";
+import DocumentTitle from "../../components/DocumentTitle";
+import css from "./Home.module.css";
 
 const styles = {
   container: {
@@ -17,18 +18,10 @@ const styles = {
 export default function Home() {
   return (
     <>
-      <DocumentTitle>Home</DocumentTitle>
+      <DocumentTitle className={css.home}>Home</DocumentTitle>
 
       <div style={styles.container}>
-        <h1 style={styles.title}>
-          Welcome contacts page{" "}
-          <span
-            role="img"
-            aria-label="Greeting icon"
-          >
-            💁‍♀️
-          </span>
-        </h1>
+        <h1 style={styles.title}>Welcome contacts page</h1>
       </div>
     </>
   );
