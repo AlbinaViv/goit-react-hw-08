@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DocumentTitle from "../components/DocumentTitle";
 import { selectIsLoading } from "../redux/selectors";
-import { fetchContacts } from "../redux/operations";
+import { fetchContacts } from "../redux/contacts/operations";
 import { ContactList } from "../components/ContactList/ContactList";
 import { Contact } from "../components/Contact/Contact";
+import { ContactForm } from "../components/ContactForm/ContactForm";
+import { SearchBox } from "../components/SearchBox/SearchBox";
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -17,7 +19,8 @@ export default function Contacts() {
   return (
     <>
       <DocumentTitle>Your contacts</DocumentTitle>
-      <Contact />
+      <ContactForm />
+      <SearchBox />
       <div>{isLoading && "Request in progress..."}</div>
       <ContactList />
     </>

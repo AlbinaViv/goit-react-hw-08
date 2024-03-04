@@ -27,11 +27,11 @@ export const ContactList = () => {
 
   return (
     <ul className={css.contactList}>
-      {getFilterContacts.map(({ id, name, phone }) => (
+      {getFilterContacts.map(({ id, name, number }) => (
         <Contact
           key={id}
           name={name}
-          number={phone}
+          number={number}
           id={id}
           onDelete={deleteUsers}
         />

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-import { addContact, deleteContact, fetchContacts } from "../operations";
+import { addContact, deleteContact, fetchContacts } from "./operations";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -33,7 +33,8 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = true;
-        state.items.push(action.payload);
+        // state.items.push(action.payload);
+        state.items = [...state.items, action.payload];
       })
       .addCase(addContact.rejected, (state, action) => {
         state.isLoading = false;

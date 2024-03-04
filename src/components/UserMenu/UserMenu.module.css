@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.username {
+}
+
+button.bt {
+  padding: 4px, 8px;
+}
