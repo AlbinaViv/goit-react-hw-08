@@ -19,8 +19,8 @@ export default function Home() {
     <>
       <DocumentTitle>Home</DocumentTitle>
 
-      <div>
-        <h1>Welcome contacts page</h1>
+      <div style={styles.container}>
+        <h1 style={styles.title}>Welcome contacts page</h1>
       </div>
     </>
   );
