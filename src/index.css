@@ -23,7 +23,7 @@ a:hover {
 
 body {
   margin: 0 auto;
-
+  background-color: rgb(0, 48, 57);
   max-width: 428px;
   padding: 0 16px;
 }
