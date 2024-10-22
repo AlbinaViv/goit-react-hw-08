@@ -7,6 +7,7 @@ import { ContactList } from "../components/ContactList/ContactList";
 import { Contact } from "../components/Contact/Contact";
 import { ContactForm } from "../components/ContactForm/ContactForm";
 import { SearchBox } from "../components/SearchBox/SearchBox";
+import { Loader } from "../components/Loader/Loader";
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Contacts() {
       <DocumentTitle>Your contacts</DocumentTitle>
       <ContactForm />
       <SearchBox />
-      <div>{isLoading && "Request in progress..."}</div>
+      <div>{isLoading && <Loader />}</div>
       <ContactList />
     </>
   );

@@ -1,4 +1,5 @@
 import { useEffect, lazy } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -7,6 +8,7 @@ import { Layout } from "../Layout";
 import { refreshUser } from "../../redux/auth/operations";
 import { useAuth } from "../../hooks";
 import { RestrictedRoute } from "../RestrictedRoute";
+import css from "./App.module.css";
 
 const Home = lazy(() => import("../../pages/Home/Home"));
 const RegisterPage = lazy(() => import("../../pages/Register"));
@@ -25,59 +27,83 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
     <>
-      <Routes>
-        <Route
-          path="/"
-          element={<Layout />}
-        >
+      <AnimatePresence>
+        <Routes>
           <Route
-            index
-            element={<Home />}
-          />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<ContactsPage />}
-              />
-            }
-          />
-        </Route>
-      </Routes>
+            path="/"
+            element={<Layout />}
+          >
+            <Route
+              index
+              element={
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Home />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <RegisterPage />
+                    </motion.div>
+                  }
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <LoginPage />
+                    </motion.div>
+                  }
+                />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <ContactsPage />
+                    </motion.div>
+                  }
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </AnimatePresence>
       <Toaster />
     </>
   );
 };
-
-//   return (
-//     <>
-//       <h1 className={css.title}>Phonebook</h1>
-//       <ContactForm />
-//       <SearchBox />
-//       {/* {isLoading && <p>Loading contacts...</p>}
-//       {error && <p>{error}</p>} */}
-//       {isLoading && !error && <b>Request in progress...</b>}
-//       {/* <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
-//       <ContactList />
-//     </>
-//   );
-// };

@@ -5,7 +5,7 @@ import { AppBar } from "./AppBar/AppBar";
 
 export const Layout = () => {
   return (
-    <div style={{ width: "100vw", margin: "0 auto", padding: "0 16px" }}>
+    <div>
       <AppBar />
       <Suspense fallback={null}>
         <Outlet />
