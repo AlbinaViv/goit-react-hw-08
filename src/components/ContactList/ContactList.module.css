@@ -1,9 +1,18 @@
 .contactList {
   display: flex;
-  flex-wrap: wrap; /* Разрешает перенос элементов на следующую строку */
+  /* Разрешает перенос элементов на следующую строку */
   gap: 20px;
+  justify-content: left;
+  flex-wrap: nowrap;
+  flex-direction: column;
   justify-content: left;
 }
 
 @media screen and (min-width: 768px) {
+  .contactList {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+  }
 }
