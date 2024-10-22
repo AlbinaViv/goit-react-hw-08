@@ -97,7 +97,12 @@ export const ContactForm = () => {
           component="span"
         />
 
-        <button type="submit">Add contact</button>
+        <button
+          className={css.button}
+          type="submit"
+        >
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
